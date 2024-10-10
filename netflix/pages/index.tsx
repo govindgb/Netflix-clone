@@ -1,7 +1,7 @@
-
-
 export default function Home() {
   return (
-    <>Newt flix clone</>
+    <>
+      <h1 className="text-2l text-green-500">Netflix clone</h1>
+    </>
   );
 }
