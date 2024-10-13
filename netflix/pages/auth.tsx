@@ -19,9 +19,13 @@ const Auth = () => {
     
   }, []);
 
+//                           ************the issue is in this file****************************  
 const login = useCallback(async () => {
   console.log(email,password);
   try {
+   //1 issue -> when I try to sign in according the code I write here once sign is done it not redirect to home page , also the url is chage
+  //before click on login -> http://localhost:3000/auth
+  //after login ->http://localhost:3000/auth?callbackUrl=http%3A%2F%2Flocalhost%3A3000%2Fauth 
    await signIn('credentials', {
       email,
       password,
@@ -86,6 +90,8 @@ const resgister = useCallback(async ()=>{
                  {variant === "login" ? "Login" : "Sign Up" }
               </button>
               <div  className="flex flex-row gap-4 items-center justify-center mt-8">
+                {/* here I am using google login so when I click on the btn it should save the data in Accouts schema but is not save
+                  refer page/prisma/schema.prisma file also */}
                  <div  onClick={() => signIn( 'google' , {callbackUrl:"/"} ) } className="h-10 w-10 bg-white flex items-center justify-center rounded-full cursor-pointer hover:opacity-80 transition">
                     <FcGoogle  size={30} />
                  </div>
