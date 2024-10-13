@@ -26,10 +26,9 @@ const login = useCallback(async () => {
       email,
       password,
       redirect: false, // Prevents automatic redirect
-      callbackUrl:"/"
     });
    
-    // router.push('/');
+    router.push('/');
   } catch(error){
      console.log(error);
   }
@@ -86,8 +85,8 @@ const resgister = useCallback(async ()=>{
               <button onClick={variant === "login" ? login : resgister}  className="bg-red-600 py-3 text-white hover:bg-red-700 w-full rounded-md mt-10 transition">
                  {variant === "login" ? "Login" : "Sign Up" }
               </button>
-              <div onClick={() => signIn( 'google' , {callbackUrl:"/"} ) } className="flex flex-row gap-4 items-center justify-center mt-8">
-                 <div  className="h-10 w-10 bg-white flex items-center justify-center rounded-full cursor-pointer hover:opacity-80 transition">
+              <div  className="flex flex-row gap-4 items-center justify-center mt-8">
+                 <div  onClick={() => signIn( 'google' , {callbackUrl:"/"} ) } className="h-10 w-10 bg-white flex items-center justify-center rounded-full cursor-pointer hover:opacity-80 transition">
                     <FcGoogle  size={30} />
                  </div>
                  <div onClick={() => signIn( 'github' , {callbackUrl:"/"} ) } className="h-10 w-10 bg-white flex items-center justify-center rounded-full cursor-pointer hover:opacity-80 transition">

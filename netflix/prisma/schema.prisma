@@ -39,6 +39,9 @@ model User{
   favoriteIds String[] @db.ObjectId
   session Session[]
   accounts Account[]
+
+  @@map("users")
+
 }
  
 
