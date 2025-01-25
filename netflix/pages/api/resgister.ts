@@ -4,6 +4,7 @@ import prismadb from '@/lib/prismadb'
 
 export default async function handler(req : NextApiRequest, res : NextApiResponse){
     // return res.status(200).json({ name: req.body });
+    console.log("comidddng here")
     if(req.method !== "POST"){
         return res.status(405).end();
     }
@@ -18,7 +19,8 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
                 email,
             }
         })
-
+       
+        return ;
         if(existingUser){
             return res.status(422).json({error:"Email taken"});
         }

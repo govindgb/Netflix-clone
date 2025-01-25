@@ -56,7 +56,6 @@ export default NextAuth({
             }
 
             return user;
-            // return "working";
           }
         })
     ],

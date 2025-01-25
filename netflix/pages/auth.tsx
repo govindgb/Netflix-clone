@@ -19,20 +19,30 @@ const Auth = () => {
     
   }, []);
 
+
 const login = useCallback(async () => {
-  console.log(email,password);
   try {
-   await signIn('credentials', {
+    const result = await signIn('credentials', {
       email,
       password,
-      redirect: false, // Prevents automatic redirect
-    });
-   
-    router.push('/');
-  } catch(error){
-     console.log(error);
+      redirect: false,
+      // callbackUrl: '/',  // Redirect to home page after sign-in
+    }).then((result) => {
+
+      if (result?.error)
+          console.log("Invalid Credentials!")
+      else
+          window.location.replace("/")
+  })
+  
+  .catch(err => {
+    console.log(`Error Occured: ${err}`)
+  })
+
+  } catch (error) {
+    console.log(error);
   }
-},[email,password])
+}, [email, password, router]);
 
 const resgister = useCallback(async ()=>{
     try{
